@@ -1,0 +1,27 @@
+{
+  "name": "hu-rateyourprofessor",
+  "version": "1.0.0",
+  "description": "A RateYourProfessor website for Habib University students where you can rate your teachers and how they taught their respective courses.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AhsanSN/HU-RateYourProfessor.git"
+  },
+  "keywords": [
+    "Rate",
+    "your",
+    "professor",
+    "Habib",
+    "University",
+    "HU"
+  ],
+  "author": "Syed Ahsan Ahmed, Moonis Rasheed",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/AhsanSN/HU-RateYourProfessor/issues"
+  },
+  "homepage": "https://github.com/AhsanSN/HU-RateYourProfessor#readme"
+}
