@@ -22,6 +22,10 @@ function about() {
 function autoNavigate() {
     homePage();
     about();
+
+    app.listen(3000, function () {
+        console.log('listening on port 3000!')
+    })
 }
 
 //exporting
