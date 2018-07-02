@@ -5,12 +5,13 @@ const mysql = require('mysql');
 //session variables
 var s_username = null
 var s_usernumber = null
+var s_email = null
 
 var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'sampleDB'
+    database: 'HU_RYP'
 });
 
 connection.connect(function (error) {
@@ -22,16 +23,18 @@ connection.connect(function (error) {
     }
 });
 
-function addUserToDb(username, password) {
-    connection.query(`INSERT INTO Users (userId, username, password) VALUE ('${userId}','${username}', '${password}')`, function (error, rows, fields) {
+function addUserToDb(username, email, password) {
+    //generate userid
+
+    connection.query(`INSERT INTO Users (userId, username, email, password) VALUE ('${userId}','${username}','${email}', '${password}')`, function (error, rows, fields) {
         if (error) {
             console.log("error in query");
         }
     }); 
 }
 
-function verifyCredentials(username, password, callback) {
-    connection.query(`SELECT name FROM sampletable`, function (error, rows, fields) {
+function verifyCredentials(email, password, callback) {
+    connection.query(`SELECT name FROM Users Where email = ${email} AND password = ${password}`, function (error, rows, fields) {
         if (error)
             callback(error, null);
         else {
@@ -39,6 +42,7 @@ function verifyCredentials(username, password, callback) {
             if (rows.length == 1) {
                 //person found
                 s_username = rows[0].username;
+                s_email = rows[0].email;
                 s_userId = rows[0].userId;
             }
             callback(null, messageArrayTemp);
@@ -49,10 +53,11 @@ function verifyCredentials(username, password, callback) {
 function logout() {
     s_username = null;
     s_userId = null;
+    s_email = null;
 }
 
 function isSignedIn() {
-    if (((s_username) || (s_usernumber)) != null) {
+    if (((s_username) || (s_usernumber) || (s_email)) != null) {
         return true;
     }
     else {
@@ -60,11 +65,59 @@ function isSignedIn() {
     }
 }
 
+function submitReview(instructorName, courseName, rat_teaching, rat_marking, rat_etc, rat_comments) {
+
+    connection.query(`INSERT INTO Reviews (
+                    instructorName,
+                    courseName,
+                    rat_teaching,
+                    rat_marking,
+                    rat_etc,
+                    rat_comments)
+                VALUE ('${instructorName}',
+                        '${courseName}',
+                        '${rat_teaching}', 
+                        '${rat_marking}',
+                        '${rat_etc}',
+                        '${rat_comments}')`,
+        function (error, rows, fields) {
+        if (error) {
+            console.log("error in query");
+        }
+    }); 
+}
+
+function showInstructorReview(instructor, callback) {
+    connection.query(`SELECT name FROM Users Where email = ${email} AND password = ${password}`, function (error, rows, fields) {
+        if (error)
+            callback(error, null);
+        else {
+            //successfull query
+            callback(null, messageArrayTemp);
+        }
+    });
+}
+
+function showCourseInstructors(course) {
+    connection.query(`SELECT name FROM Users Where email = ${email} AND password = ${password}`, function (error, rows, fields) {
+        if (error)
+            callback(error, null);
+        else {
+            //successfull query
+            callback(null, messageArrayTemp);
+        }
+    });
+}
+
 //exporting
 module.exports.addUserToDb = addUserToDb;
 module.exports.verifyCredentials = verifyCredentials;
 module.exports.logout = logout;
 module.exports.isSignedIn = isSignedIn;
+module.exports.submitReview = submitReview;
+module.exports.showInstructorReview = showInstructorReview;
+module.exports.showCourseInstructors = showCourseInstructors;
+
 
 
 
