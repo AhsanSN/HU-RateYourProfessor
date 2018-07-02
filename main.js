@@ -1,20 +1,20 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser');
+const pages = require('./pages');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs')
 
-function home() {
+function start() {
 
-    app.use(express.static('public')); //inline
-    //displaying html requested page
-    app.get('/', function (req, res) {
-        res.render('index', { Name: null, error: null });
-    })
+    //starting 
+    pages.homePage();
+
+    pages.autoNavigate();
 
     app.listen(3000, function () {
-        console.log('Example app listening on port 3000!')
+        console.log('listening on port 3000!')
     })
 }
 
-home();
+start();
