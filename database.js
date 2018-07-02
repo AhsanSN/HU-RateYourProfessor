@@ -34,7 +34,7 @@ function addUserToDb(username, email, password) {
 }
 
 function verifyCredentials(email, password, callback) {
-    connection.query(`SELECT name FROM Users Where email = ${email} AND password = ${password}`, function (error, rows, fields) {
+    connection.query(`SELECT * FROM Users Where email = ${email} AND password = ${password}`, function (error, rows, fields) {
         if (error)
             callback(error, null);
         else {
@@ -88,18 +88,19 @@ function submitReview(instructorName, courseName, rat_teaching, rat_marking, rat
 }
 
 function showInstructorReview(instructor, callback) {
-    connection.query(`SELECT name FROM Users Where email = ${email} AND password = ${password}`, function (error, rows, fields) {
+    connection.query(`SELECT * FROM Reviews Where instructor = ${instructor}`, function (error, rows, fields) {
         if (error)
             callback(error, null);
         else {
             //successfull query
+
             callback(null, messageArrayTemp);
         }
     });
 }
 
 function showCourseInstructors(course) {
-    connection.query(`SELECT name FROM Users Where email = ${email} AND password = ${password}`, function (error, rows, fields) {
+    connection.query(`SELECT * FROM Instructors Where course = ${course}`, function (error, rows, fields) {
         if (error)
             callback(error, null);
         else {
