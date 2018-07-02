@@ -99,8 +99,30 @@ function showInstructorReview(instructor, callback) {
     });
 }
 
-function showCourseInstructors(course) {
+function showCourseInstructors(course, callback) {
     connection.query(`SELECT * FROM Instructors Where course = ${course}`, function (error, rows, fields) {
+        if (error)
+            callback(error, null);
+        else {
+            //successfull query
+            callback(null, messageArrayTemp);
+        }
+    });
+}
+
+function showAllCourseInstructors(callback) {
+    connection.query(`SELECT * FROM Instructors`, function (error, rows, fields) {
+        if (error)
+            callback(error, null);
+        else {
+            //successfull query
+            callback(null, messageArrayTemp);
+        }
+    });
+}
+
+function showAllInstructors(callback) {
+    connection.query(`SELECT * FROM Instructors`, function (error, rows, fields) {
         if (error)
             callback(error, null);
         else {
@@ -118,6 +140,8 @@ module.exports.isSignedIn = isSignedIn;
 module.exports.submitReview = submitReview;
 module.exports.showInstructorReview = showInstructorReview;
 module.exports.showCourseInstructors = showCourseInstructors;
+module.exports.showAllCourseInstructors = showAllCourseInstructors;
+module.exports.showAllInstructors = showAllInstructors;
 
 
 
