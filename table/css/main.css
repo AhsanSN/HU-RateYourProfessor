@@ -141,23 +141,22 @@ iframe {
 }
 
 .container-table100 {
-  width: 100%;
-  min-height: 100vh;
-  background: #fff;
-
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 33px 30px;
+    width: 100%;
+    min-height: 100vh;
+    background: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    left: 0px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .wrap-table100 {
-  width: 1170px;
+    width: calc(100% - 25px);
 }
 
 /*//////////////////////////////////////////////////////////////////
