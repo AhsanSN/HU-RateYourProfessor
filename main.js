@@ -5,7 +5,6 @@ function start() {
     //starting 
     pages.homePage();
     pages.autoNavigate();
-
     
 }
 
