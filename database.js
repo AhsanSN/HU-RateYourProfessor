@@ -29,6 +29,10 @@ function addUserToDb(username, email, password) {
     connection.query(`INSERT INTO Users (userId, username, email, password) VALUE ('${userId}','${username}','${email}', '${password}')`, function (error, rows, fields) {
         if (error) {
             console.log("error in query");
+            return false
+        }
+        else {
+            return true
         }
     }); 
 }
@@ -44,6 +48,7 @@ function verifyCredentials(email, password, callback) {
                 s_username = rows[0].username;
                 s_email = rows[0].email;
                 s_userId = rows[0].userId;
+                return true
             }
             callback(null, messageArrayTemp);
         }

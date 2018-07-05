@@ -70,25 +70,27 @@
 											<form action="#">
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="username">Username or Email</label>
+														<label for="username">Username</label>
 														<input type="text" class="form-control" id="username">
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="password">Password</label>
+														<label for="password">Email</label>
+														<input type="password" class="form-control" id="email">
+													</div>
+												</div>
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="password2">Password</label>
 														<input type="password" class="form-control" id="password">
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="password2">Repeat Password</label>
-														<input type="password" class="form-control" id="password2">
-													</div>
-												</div>
-												<div class="row form-group">
-													<div class="col-md-12">
+													<a href="/signup">
 														<input type="submit" class="btn btn-primary" value="Sign up">
+													</a>
 													</div>
 												</div>
 											</form>	
@@ -97,8 +99,8 @@
 											<form action="#">
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="username">Username or Email</label>
-														<input type="text" class="form-control" id="username">
+														<label for="username">Email</label>
+														<input type="text" class="form-control" id="Email">
 													</div>
 												</div>
 												<div class="row form-group">
@@ -110,10 +112,13 @@
 
 												<div class="row form-group">
 													<div class="col-md-12">
+													<a href="/login">
 														<input type="submit" class="btn btn-primary" value="Login">
+													</a>
 													</div>
 												</div>
 											</form>	
+											<div id="errorMsg"></div>
 										</div>
 
 									</div>
